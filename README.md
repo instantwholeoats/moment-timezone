@@ -34,3 +34,9 @@ dec.tz('Australia/Sydney').format('ha z');     // 11pm EST
 
 [travis-url]: http://travis-ci.org/moment/moment-timezone
 [travis-image]: http://img.shields.io/travis/moment/moment-timezone/develop.svg?style=flat
+
+## Dependency maintenance
+
+Use Node.js 22.12+ and npm for development. Runtime exports accept both CommonJS Moment and a webpack-style default export. JSHint's minimatch/lodash and the Nodeunit TAP reporter use patched dependency overrides.
+
+Run `npm ci --ignore-scripts`, `npx grunt jshint nodeunit:core`, and `npm audit`. The full `npm test` also checks historical timezone guesses from 2018 against bundled 2019a data: on 2026-09-13, 73 of 1,426,324 zone assertions fail identically in the pre-update baseline and the refreshed version. Core tests pass. Timezone data has not been refreshed by this dependency update.

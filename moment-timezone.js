@@ -9,7 +9,8 @@
 
 	/*global define*/
 	if (typeof module === 'object' && module.exports) {
-		module.exports = factory(require('moment').default); // Node
+		var moment = require('moment');
+		module.exports = factory(moment.default || moment); // Node / webpack interop
 	} else if (typeof define === 'function' && define.amd) {
 		define(['moment'], factory);                 // AMD
 	} else {
